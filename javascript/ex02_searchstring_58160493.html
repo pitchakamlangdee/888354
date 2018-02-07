@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ex2_searchstring</title>
+<style type="text/css">
+	
+	h1{
+		text-align: center;
+	}
+	#txt,#sen_case,#input_search,#show_result{
+		text-align: center;
+
+	}
+</style>
+<script type="text/javascript">
+function search_sensitive(){
+	var splitString = "";
+	var search_input = document.getElementById("search").value;
+	var txt_input = document.getElementById("txtarea").value;
+	var count = 0;
+	var i = 0;
+	if (document.getElementById("sen_yes").checked) {
+		splitString = txt_input.split(" ");
+			while(splitString[i] != null){
+				if(splitString[i] == search_input){
+					count++;
+				}
+					i++;
+			}
+		document.getElementById("show_result").innerHTML = "Result for search : "+count;
+	}else{
+		var input_low = txt_input.toLowerCase();
+		var search_low = search_input.toLowerCase();
+		splitString = input_low.split(" ");
+			while(splitString[i] != null){
+				if(splitString[i] == search_low){
+					count++;
+				}
+					i++;
+			}
+		document.getElementById("show_result").innerHTML = "Result for search : "+count;
+	}
+}
+</script>
+</head>
+<body>
+	<h1>Ex2 - Search String Non Sensitive Case</h1>
+	<hr><br>
+	<div id="txt">Text input : 
+		<textarea id="txtarea"></textarea>
+	</div>
+	<br>
+	<div id="sen_case" >Sensitive Case : 
+		<input type="radio" name="sensitive" id="sen_yes">Yes <input type="radio" name="sensitive" id="sen_no"> No
+	</div>
+	<br>
+	<div id="input_search">Search : 
+		<input type="text" id="search"></div>
+		<br>
+		<center><button  type="button" onclick="search_sensitive()">search</button></center>
+	<div id="show_result"><div>
+</body>
+</html>
